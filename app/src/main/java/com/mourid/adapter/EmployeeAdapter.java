@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mourid.R;
 import com.mourid.entities.Employee;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class EmployeeAdapter extends BaseAdapter {
@@ -51,9 +53,13 @@ public class EmployeeAdapter extends BaseAdapter {
         TextView lastName = convertView.findViewById(R.id.prenom);
         TextView date = convertView.findViewById(R.id.date);
         TextView  service= convertView.findViewById(R.id.service);
+        ImageView image = convertView.findViewById(R.id.img);
+        image.setImageResource(R.mipmap.profil);
         firstName.setText(employees.get(position).getNom());
         lastName.setText(employees.get(position).getPrenom());
-        date.setText(employees.get(position).getDateNaissance()+"");
+        SimpleDateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String targetDateString = targetFormat.format(employees.get(position).getDateNaissance());
+        date.setText(targetDateString);
         service.setText(employees.get(position).getService().getNom()+"");
         return convertView;
     }

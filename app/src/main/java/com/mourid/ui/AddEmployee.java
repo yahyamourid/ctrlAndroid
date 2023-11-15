@@ -2,6 +2,7 @@ package com.mourid.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,7 +61,7 @@ public class AddEmployee extends AppCompatActivity {
         });
     }
     private void getServices() {
-        String getFUrl = "http://192.168.43.20:8080/api/services/all";
+        String getFUrl = "http://192.168.1.109:8080/api/services/all";
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
                 getFUrl, null, new Response.Listener<JSONArray>() {
@@ -106,7 +107,7 @@ public class AddEmployee extends AppCompatActivity {
         requestQueue.add(request);
     }
     public void submitEmployee() {
-        String insertUrl = "http://192.168.43.20:8080/api/employees";
+        String insertUrl = "http://192.168.1.109:8080/api/employees";
         JSONObject jsonBody = new JSONObject();
         try {
 
@@ -114,14 +115,12 @@ public class AddEmployee extends AppCompatActivity {
             jsonBody.put("nom", nom.getText().toString());
             jsonBody.put("prenom", prenom.getText().toString());
             jsonBody.put("dateNaissance", date.getText().toString());
+            jsonBody.put("photo", "");
             JSONObject serviceObject = new JSONObject();
             serviceObject.put("id", selectedService.getId());
             jsonBody.put("service", serviceObject);
             Log.d("Employee", jsonBody.toString());
-            Toast.makeText(AddEmployee.this, "Student Added", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(AddStudent.this, StudentList.class);
-//            startActivity(intent);
-//            AddStudent.this.finish();
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -130,6 +129,10 @@ public class AddEmployee extends AppCompatActivity {
                 insertUrl, jsonBody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Toast.makeText(AddEmployee.this, "Employee ajoute avec succes", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddEmployee.this, EmployeeList.class);
+                startActivity(intent);
+                AddEmployee.this.finish();
                 Log.d("resultat", response+"");
             }
         }, new Response.ErrorListener() {

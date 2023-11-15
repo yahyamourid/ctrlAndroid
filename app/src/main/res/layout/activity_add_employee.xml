@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:padding="20dp"
     tools:context=".ui.AddEmployee"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
         android:id="@+id/nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:paddingBottom="20dp"/>
 
     <TextView
         android:id="@+id/textView4"
@@ -29,7 +30,7 @@
         android:id="@+id/prenom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:paddingBottom="20dp"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -42,7 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="date" />
+        android:inputType="date"
+        android:paddingBottom="20dp"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -53,11 +55,12 @@
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"/>
 
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Envoyer" />
 </LinearLayout>

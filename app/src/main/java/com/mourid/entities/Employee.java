@@ -57,4 +57,16 @@ public class Employee {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", dateNaissance=" + dateNaissance +
+                ", photo='" + photo + '\'' +
+                ", service=" + service +
+                '}';
+    }
 }
